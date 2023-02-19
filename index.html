@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var options = [
+            "rock",
+            "paper",
+            "scissors",
+            "rock",
+            "rock",
+            "rock",
+            "rock",
+            "rock",
+            "rock",
+            "rock",
+            "rock",
+        ];
+        
+        
+        function getComputerChoice(){
+            var randomNumber = Math.floor(Math.random()*options.length);
+            console.log(options[randomNumber]);
+            return(options[randomNumber]);
+        }
+
+        function getComputerChoiceRival(){
+            var randomNumber2 = Math.floor(Math.random()*options.length);
+            console.log(options[randomNumber2]);
+            return(options[randomNumber2]);
+            
+        }
+        
+        
+
+        function playRound(player, pc){
+        if (pc == "rock" && player == "paper" || pc =="paper" && player =="scissors" || pc == "scissors" && player == "rock"){
+            return("you win");
+        } else if (pc == player){
+            return("it's a draw");
+        } else{
+            return("you lose");
+        }
+    }
+    function game(){
+        let comp = 0;
+        let person = 0;
+        for(i=0; i<1000; i++){
+            let computerChoice = getComputerChoice();
+            let playerSelection = getComputerChoiceRival();
+            let points = playRound(playerSelection, computerChoice);
+            if(points=="you win"){
+                person += 1;
+            } else if( points =="you lose"){
+                comp += 1;
+            } else if(points=="it's a draw"){
+                console.log("no points")
+            }
+            console.log("computer points: " + comp);
+            console.log("your points: " + person);
+    }
+    if(comp>person){
+        alert("Juan has won " + comp +" to " + person)
+    } else if (person>comp){
+        alert("Oscar has won " + person +" to " + comp)
+    } else{
+        alert("it's a draw")
+    }
+    }
+    game();
+    
+    </script>
+</body>
+</html>
